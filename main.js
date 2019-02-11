@@ -66,6 +66,25 @@ class Flareon extends Client {
     }
   }
 
+  async unloadCommand(commandPath, commandName) {
+    let command;
+    if (this.command.has(commandName)) {
+      command = this.commands.get(commandName);
+    } else if (this.aliases.has(commandName)) {
+      command = this.commands.get(this.aliases.get(commandName));
+    }
+    if (!command)
+      return `La commande \`${commandName}\` ne semble pas exister. Essayez à nouveau!`;
+
+    if (command.shutdown) {
+      await command.shutdown(this);
+    }
+    delete require.cache[
+      require.resolve(`${commandPath}${path.sep}${commandName}.js`)
+    ];
+    return false;
+  }
+
   getSettings(guild) {
     const defaults = this.config.defaultSettings || {};
     const guildData = this.settings.get(guild.id) || {};
