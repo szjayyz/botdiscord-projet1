@@ -14,7 +14,8 @@ class Reboot extends Command {
 
   async run(message) {
     try {
-      await message.reply("le bot est en train de se relancer.");
+      message.delete();
+      await message.channel.send(":gear: Le bot est en train de redémarrer !");
       this.client.commands.forEach(async cmd => {
         await this.client.unloadCommand(cmd);
       });

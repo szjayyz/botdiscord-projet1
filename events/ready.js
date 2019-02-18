@@ -13,6 +13,9 @@ module.exports = class {
 
     this.client.user.setActivity("with Alex");
 
+    const channel = this.client.channels.get("539467117939130398");
+    channel.send(":gear: Le bot est redémarré !");
+
     this.client.logger.log(
       `Flareon est prêt à espionner ${
         this.client.users.size
