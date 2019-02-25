@@ -4,6 +4,7 @@ class Stop extends Command {
   constructor(client) {
     super(client, {
       name: "stop",
+      category: "Musique",
       description: "Arrêter la musique.",
       usage: "stop"
     });

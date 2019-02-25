@@ -4,6 +4,7 @@ class Queue extends Command {
   constructor(client) {
     super(client, {
       name: "queue",
+      category: "Musique",
       description: "Afficher la liste de musique.",
       usage: "queue"
     });

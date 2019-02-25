@@ -7,6 +7,7 @@ class Play extends Command {
   constructor(client) {
     super(client, {
       name: "play",
+      category: "Musique",
       description: "Jouer et ajouter de la musique.",
       usage: "play"
     });

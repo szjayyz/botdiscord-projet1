@@ -4,6 +4,7 @@ class Volume extends Command {
   constructor(client) {
     super(client, {
       name: "volume",
+      category: "Musique",
       description: "Ajuster le volume de la musique.",
       usage: "volume"
     });

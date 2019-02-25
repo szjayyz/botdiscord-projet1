@@ -4,6 +4,7 @@ class Playing extends Command {
   constructor(client) {
     super(client, {
       name: "playing",
+      category: "Musique",
       description:
         "Affiche le nom de la musique qui est en train d'être jouée.",
       usage: "playing"

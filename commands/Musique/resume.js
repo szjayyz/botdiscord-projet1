@@ -4,6 +4,7 @@ class Resume extends Command {
   constructor(client) {
     super(client, {
       name: "resume",
+      category: "Musique",
       description: "Remet en marche la musique en pause.",
       usage: "resume"
     });

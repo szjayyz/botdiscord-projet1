@@ -4,6 +4,7 @@ class Skip extends Command {
   constructor(client) {
     super(client, {
       name: "skip",
+      category: "Musique",
       description: "Sauter la musique qui est en train d'être jouée.",
       usage: "skip"
     });

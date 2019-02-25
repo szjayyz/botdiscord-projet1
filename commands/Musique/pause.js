@@ -4,6 +4,7 @@ class Pause extends Command {
   constructor(client) {
     super(client, {
       name: "pause",
+      category: "Musique",
       description: "Arrêter la musique.",
       usage: "pause"
     });
