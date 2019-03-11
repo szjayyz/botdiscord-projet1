@@ -10,16 +10,18 @@ class Flareon extends Client {
   constructor(options) {
     super(options);
 
+    this.points = new Enmap({
+      name: "points",
+      cloneLevel: "deep",
+      fetchAll: true,
+      autoFetch: true
+    });
+
     this.config = require("./config.js");
 
     this.commands = new Collection();
     this.aliases = new Collection();
     this.queue = new Map();
-
-    // https://www.youtube.com/watch?v=vvviVulgdms
-    // https://www.youtube.com/watch?v=6yLkDIJsQBU
-    // https://www.youtube.com/watch?v=xKgbF7qsjVM
-    // https://www.youtube.com/watch?v=boEypavY46w
 
     this.settings = new Enmap({
       name: "settings",

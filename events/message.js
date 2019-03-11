@@ -8,6 +8,30 @@ module.exports = class {
   async run(message) {
     if (message.author.bot) return;
 
+    if (message.guild) {
+      this.client.points.ensure(`${message.guild.id}-${message.author.id}`, {
+        user: message.author.id,
+        guild: message.guild.id,
+        points: 0,
+        level: 1
+      });
+
+      const key = `${message.guild.id}-${message.author.id}`;
+
+      this.client.points.inc(key, "points");
+
+      const curLvl = Math.floor(
+        0.1 * Math.sqrt(this.client.points.get(key, "points"))
+      );
+
+      if (this.client.points.get(key, "level") < curLvl) {
+        message.reply(
+          `tu es maintenant niveau ***${curLvl}***! Je te fécilite !`
+        );
+        this.client.points.set(key, curLvl, "level");
+      }
+    }
+
     if (
       !message.channel.permissionsFor(message.guild.me).missing("SEND_MESSAGES")
     )
