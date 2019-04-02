@@ -30,6 +30,13 @@ class Flareon extends Client {
       autoFetch: true
     });
 
+    this.warns = new Enmap({
+      name: "warns",
+      cloneLevel: "deep",
+      fetchAll: true,
+      autoFetch: true
+    });
+
     this.logger = require("./modules/Logger");
     this.wait = require("util").promisify(setTimeout);
   }
