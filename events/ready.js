@@ -13,6 +13,8 @@ module.exports = class {
 
     this.client.user.setActivity("with Alex");
 
+    require("../modules/dashboard.js")(this.client);
+
     const channel = this.client.channels.get("560079403598741515");
     channel.send(":gear: Le bot est redémarré !");
 

@@ -6,6 +6,13 @@ const config = {
     adminRole: "Master",
     systemNotice: true
   },
+  dashboard: {
+    oauthSecret: "9UQ9VQNi8xUTt2h8nNv-TiPnVM56gWoF",
+    callbackUrl: "http://localhost:3030/callback",
+    sSecret: "sky says hi",
+    domain: "localhost",
+    port: "3030"
+  },
   permLevels: [
     { level: 0, name: "Utilisateur", check: () => true },
     {
