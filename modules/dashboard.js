@@ -12,7 +12,9 @@ module.exports = client => {
     `${process.cwd()}${path.sep}dashboard`
   );
   // root/dashboard/templates
-  const templates = path.resolve(`${dashboardDirectory}${path.sep}templates`);
+  const templatesDirectory = path.resolve(
+    `${dashboardDirectory}${path.sep}templates`
+  );
   // root/dashboard/public
   dashboard.use(
     "/public",
@@ -47,4 +49,26 @@ module.exports = client => {
 
   dashboard.engine("html", require("ejs").renderFile);
   dashboard.set("view engine", "html");
+
+  const renderTemplate = (res, req, template, data = {}) => {
+    const baseData = {
+      bot: client,
+      path: req.path,
+      user: req.isAuthenticated() ? req.user : null
+    };
+    res.render(
+      path.resolve(`${templatesDirectory}${path.sep}${template}`),
+      Object.assign(baseData, data)
+    );
+  };
+
+  dashboard.get("/", (req, res) => {
+    renderTemplate(res, req, "home.ejs");
+  });
+
+  dashboard.get("/commands", (req, res) => {
+    renderTemplate(res, req, "commands.ejs");
+  });
+
+  client.site = dashboard.listen(client.config.dashboard.port);
 };
