@@ -6,8 +6,7 @@ class Brain extends Meme {
       name: "brain",
       description: "Meme.",
       usage:
-        "brain <premier texte; deuxième texte; troisième texte; quatrième texte>",
-      category: "Memes"
+        "brain <texte; texte; texte; texte>"
     });
   }
 

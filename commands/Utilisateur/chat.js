@@ -6,8 +6,7 @@ class Chat extends Command {
     super(client, {
       name: "chat",
       description: "Une image de chat.",
-      usage: "chat",
-      category: "Animaux"
+      usage: "chat"
     });
   }
 
