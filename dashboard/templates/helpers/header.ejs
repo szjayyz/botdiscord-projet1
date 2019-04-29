@@ -9,17 +9,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
     />
     <link rel="stylesheet" href="public/css/style.css" />
-    <title>Document</title>
+    <title><%= bot.user.username %></title>
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-            height="28"
-          />
+        <a class="navbar-item" href="/"> <img src="<%= bot.user.avatarURL %>" class="img-brand" width="30" heigth="30" />
+          <%= bot.user.username %>
         </a>
 
         <a
@@ -37,45 +33,30 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
+
+          <a class="navbar-item" href="/commands">
+            Commandes
           </a>
 
-          <a class="navbar-item">
-            Documentation
+          <a class="navbar-item" href="https://discordapp.com/api/oauth2/authorize?client_id=539414026791157761&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3030%2Fcallback&scope=bot">
+            Ajouter le bot à votre serveur
           </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
+          <a class="navbar-item" href="/stats">
+            Sur <%= bot.guilds.size %> serveurs
+          </a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider" />
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div>
+          <a class="navbar-item" href="https://discord.gg/xEnw3rx">
+            Support
+          </a>
+
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
+              <a class="button is-warning">
+                Connexion
               </a>
             </div>
           </div>
