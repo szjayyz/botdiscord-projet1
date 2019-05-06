@@ -14,7 +14,13 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/"> <img src="<%= bot.user.avatarURL %>" class="img-brand" width="30" heigth="30" />
+        <a class="navbar-item" href="/">
+          <img
+            src="<%= bot.user.avatarURL %>"
+            class="img-brand"
+            width="30"
+            heigth="30"
+          />
           <%= bot.user.username %>
         </a>
 
@@ -33,12 +39,14 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-
           <a class="navbar-item" href="/commands">
             Commandes
           </a>
 
-          <a class="navbar-item" href="https://discordapp.com/api/oauth2/authorize?client_id=539414026791157761&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3030%2Fcallback&scope=bot">
+          <a
+            class="navbar-item"
+            href="https://discordapp.com/api/oauth2/authorize?client_id=539414026791157761&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3030%2Fcallback&scope=bot"
+          >
             Ajouter le bot à votre serveur
           </a>
 
@@ -49,19 +57,24 @@
           <a class="navbar-item" href="https://discord.gg/xEnw3rx">
             Support
           </a>
-
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-warning">
-                Connexion
-              </a>
-            </div>
+            <% if(user) { %>
+              <div class="buttons">
+                <a class="button is-warning" href="/logout">
+                  Déconnexion
+                </a>
+              </div>
+            <% } else { %>
+              <div class="buttons">
+                <a class="button is-warning" href="/login">
+                  Connexion
+                </a>
+              </div>
           </div>
+          <% } %>
         </div>
       </div>
     </nav>
-  </body>
-</html>

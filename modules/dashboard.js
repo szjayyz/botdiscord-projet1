@@ -21,13 +21,21 @@ module.exports = client => {
     express.static(path.resolve(`${dashboardDirectory}${path.sep}public`))
   );
 
+  passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+
+  passport.deserializeUser((obj, done) => {
+    done(null, obj);
+  });
+
   passport.use(
     new Strategy(
       {
         clientID: client.appInfo.id,
         clientSecret: client.config.dashboard.oauthSecret,
         callbackURL: client.config.dashboard.callbackUrl,
-        scope: ["identity", "guilds"]
+        scope: ["identify", "guilds"]
       },
       (accessToken, refreshToken, profile, done) => {
         process.nextTick(() => done(null, profile));
@@ -61,6 +69,24 @@ module.exports = client => {
       Object.assign(baseData, data)
     );
   };
+
+  dashboard.get("/login", (req, res, next) => {
+    req.session.backURL = "/";
+    next();
+  },
+  passport.authenticate("discord")
+  );
+
+  dashboard.get("/callback", passport.authenticate("discord"), (req, res) => {
+    res.redirect("/");
+  });
+
+  dashboard.get("/logout", (req, res) => {
+    req.session.destroy(() => {
+      req.logout();
+      res.redirect("/");
+    });
+  });
 
   dashboard.get("/", (req, res) => {
     renderTemplate(res, req, "home.ejs");
