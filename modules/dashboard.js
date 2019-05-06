@@ -89,7 +89,16 @@ module.exports = client => {
   });
 
   dashboard.get("/", (req, res) => {
-    renderTemplate(res, req, "home.ejs");
+    const members = client.users.size;
+    const channels = client.channels.size;
+    const guilds = client.guilds.size;
+    renderTemplate(res, req, "home.ejs", {
+      stats: {
+        serveurs: guilds,
+        utilisateurs: members,
+        salons: channels
+      }
+    });
   });
 
   dashboard.get("/commands", (req, res) => {

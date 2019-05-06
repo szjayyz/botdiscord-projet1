@@ -1,16 +1,44 @@
 <% include ./helpers/header %>
 <section class="hero">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                Tableau de bord - <%= bot.user.username %>
-            </h1>
-            <h4 class="subtitle">
-                <%= bot.appInfo.description %>
-            </h4>
-            <a href="/commands" class="button is-dark">Nos commandes</a>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Tableau de bord - <%= bot.user.username %>
+      </h1>
+      <h4 class="subtitle">
+        <%= bot.appInfo.description %>
+      </h4>
+      <a href="/commands" class="button is-dark">Nos commandes</a>
+      <% if(user) { %>
+      <div class="dropdown is-hoverable">
+        <div class="dropdown-trigger">
+          <button
+            class="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu4"
+          >
+            <span>Statistiques du serveur</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content">
+            <div class="dropdown-item">
+              <p>
+                Serveurs: <%= stats.serveurs %><br />
+                Utilisateurs: <%= stats.utilisateurs %><br />
+                Salons: <%= stats.salons %><br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } else { %>
+      <a href="/login" class="button is-warning">Connexion</a>
+      <% } %>
     </div>
-</div>
+  </div>
 </section>
 <% include ./helpers/footer %>
-
