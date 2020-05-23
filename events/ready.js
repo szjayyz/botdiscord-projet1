@@ -11,7 +11,7 @@ module.exports = class {
       this.client.appInfo = await this.client.fetchApplication();
     }, 60000);
 
-    this.client.user.setActivity("with Alex");
+    this.client.user.setActivity("Faut Savoir ce que tu veux");
 
     const channel = this.client.channels.get("539467117939130398");
     channel.send(":gear: Le bot est redémarré !");
